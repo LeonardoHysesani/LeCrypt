@@ -1,9 +1,10 @@
 package Caesar;
 
+import Alphabets.English;
+
 import java.util.Scanner;
 
 public class Cipher {
-    public static final char[] EnglishAlphabet = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'};
 
     public static void main(String[] args) {
         System.out.println("Caesar Cipher");
@@ -32,7 +33,7 @@ public class Cipher {
 
         for (int i = 0; i < cipherTextChars.length; i++) {
             for (int j = 0; j < 26; j++) {
-                if (EnglishAlphabet[j] == cipherTextChars[i]){
+                if (Alphabets.English.alphabet[j] == cipherTextChars[i]){
                     switch (operation) {
                         case 1 -> cipherTextChars[i] = encode(shift, j);
                         case 2 -> cipherTextChars[i] = decode(shift, j);
@@ -54,7 +55,7 @@ public class Cipher {
                 shift %= 26;
             } while (j + shift > 25);
         }
-        letter = EnglishAlphabet[j + shift];
+        letter = English.alphabet[j + shift];
         return letter;
     }
 
@@ -65,7 +66,7 @@ public class Cipher {
                 shift %= 26;
             } while (j - shift < 0);
         }
-        letter = EnglishAlphabet[j - shift];
+        letter = English.alphabet[j - shift];
         return letter;
     }
 }
