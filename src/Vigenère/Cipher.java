@@ -1,18 +1,23 @@
 package Vigenère;
 
+import Alphabets.Vigenere;
 import java.util.Scanner;
 
 //https://en.wikipedia.org/wiki/Vigen%C3%A8re_cipher
 public class Cipher {
     public static void main(String[] args) {
-        System.out.println("Caesar Cipher");
+        System.out.println("Vigenère Cipher");
 
         Scanner input = new Scanner(System.in);
 
         System.out.print("Enter text to be encrypted/decrypted (letters of the english alphabet and whitespaces are the only valid characters): ");
         String plainText = input.nextLine();
+        String upperPlainText = plainText.toUpperCase();
+        char[] cipherTextChars = upperPlainText.toCharArray();
 
-
+        System.out.print("Enter keyword: ");
+        String keyword = input.next();
+        keyword = keyword.toUpperCase();
 
         int operation;
         do {
@@ -22,17 +27,14 @@ public class Cipher {
 
         input.close();
 
-        String upperPlainText = plainText.toUpperCase();
-        char[] cipherTextChars = upperPlainText.toCharArray();
 
         for (int i = 0; i < cipherTextChars.length; i++) {
-            for (int j = 0; j < 26; j++) {
-                if (Alphabets.Vigenere.table[i][j] == cipherTextChars[i]){
+            for (int row = 0; row < 26; row++) {
+                if (Vigenere.table[row][0] == keyword.charAt(Math.floorMod(i, keyword.length()))) {
                     switch (operation) {
-                        case 1 -> cipherTextChars[i] = encode();
-                        case 2 -> cipherTextChars[i] = decode();
+                        case 1 -> cipherTextChars[i] = encode(row, cipherTextChars[i]);
+                        case 2 -> cipherTextChars[i] = decode(row, cipherTextChars[i]);
                     }
-                    break;
                 }
             }
         }
@@ -40,16 +42,24 @@ public class Cipher {
         System.out.println(cipherTextChars);
     }
 
-
-    public static char letter;
-
-    public static char encode() {
-
+    public static char encode(int row, char letter) {
+        for (int col = 0; col < 26; col++) {
+            if (letter == Vigenere.table[0][col]) {
+                letter = Vigenere.table[row][col];
+                break;
+            }
+        }
         return letter;
     }
 
 
-    public static char decode() {
+    public static char decode(int row, char letter) {
+        for (int col = 0; col < 26; col++) {
+            if (letter == Vigenere.table[row][col]) {
+                letter = Vigenere.table[0][col];
+                break;
+            }
+        }
         return letter;
     }
 }
