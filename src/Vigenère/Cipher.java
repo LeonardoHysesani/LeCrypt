@@ -3,6 +3,7 @@ package Vigenère;
 import Alphabets.Vigenere;
 import java.util.Scanner;
 
+
 public class Cipher {
     public static void main(String[] args) {
         System.out.println("Vigenère Cipher");
