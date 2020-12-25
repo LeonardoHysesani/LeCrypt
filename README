@@ -5,3 +5,13 @@ CIPHERS:
     https://en.wikipedia.org/wiki/Caesar_cipher
     VIGENERE
     https://en.wikipedia.org/wiki/Vigen%C3%A8re_cipher
+    AFFINE
+    https://en.wikipedia.org/wiki/Affine_cipher
+
+OTHER USEFUL LINKS:
+    MODULAR MULTIPLICATIVE INVERSE
+    https://en.wikipedia.org/wiki/Modular_multiplicative_inverse
+    CONGRUENCE
+    https://en.wikipedia.org/wiki/Congruence_relation
+    COPRIME || RELATIVELY PRIME || MUTUALLY PRIME
+    https://en.wikipedia.org/wiki/Coprime_integers
